@@ -7,10 +7,8 @@ var session =require('express-session')
 var passport=require('passport')
 //var authenticate=require('./authenticate')
 var config=require('./config')
-var aboutRouter = require('./routes/aboutRouter')
-var portfolioRouter = require('./routes/portfolioRouter')
-var profileRouter = require('./routes/profileRouter')
-var userRouter = require ('./routes/userRouter')
+var ChyronRouter = require('./routes/Chyron')
+
 
 
 //var UploadRouter= require('./routes/UploadRouter');
@@ -42,17 +40,14 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-//app.use(cookieParser('yohannes-is-the-best'));
 
 
 app.use(passport.initialize())
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/about',aboutRouter)
-app.use('/profile',profileRouter)
-app.use('/portfolio',portfolioRouter)
-app.use('/user', userRouter)
+app.use('/Chyron',ChyronRouter)
+
 
 app.use(function(req, res, next) {
   next(createError(404));
